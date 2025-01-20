@@ -92,28 +92,28 @@ public abstract class AbstractStorageService implements StorageService {
             deleteBlob(gifBitmap.getMediaRef());
             gifMediaRepository.delete(gifBitmap);
         } 
-        // catch (Exception e) {
-        //     LOGGER.error("Error deleting GifBitmap: {}", e.getMessage(), e);
-        // }
+        catch (Exception e) {
+            LOGGER.error("Error deleting GifBitmap: {}", e.getMessage(), e);
+        }
     }
 
     protected abstract void uploadWithRetries(byte[] content, String objectName, String mimeType);
 
     protected abstract void deleteBlob(String blobName);
 
-    protected MediaType determineMediaType(String mimeType) throws IOException {
-        if (ALLOWED_IMAGE_MIME_TYPES.contains(mimeType)) {
-            return MediaType.IMAGE;
-        } else if (ALLOWED_VIDEO_MIME_TYPES.contains(mimeType)) {
-            return MediaType.VIDEO;
-        } else if (ALLOWED_TXT_MIME_TYPE.equals(mimeType)) {
-            return MediaType.CRASH;
-        } else if (ALLOWED_AUDIO_MIME_TYPES.contains(mimeType)) {
-            return MediaType.AUDIO;
-        } else if (ALLOWED_PDF_MIME_TYPES.contains(mimeType)) {
-            return MediaType.PDF;
-        } else if (ALLOWED_GIF_MIME_TYPES.contains(mimeType)) {
-            return MediaType.GIF;
+    // protected MediaType determineMediaType(String mimeType) throws IOException {
+    //     if (ALLOWED_IMAGE_MIME_TYPES.contains(mimeType)) {
+    //         return MediaType.IMAGE;
+    //     } else if (ALLOWED_VIDEO_MIME_TYPES.contains(mimeType)) {
+    //         return MediaType.VIDEO;
+    //     } else if (ALLOWED_TXT_MIME_TYPE.equals(mimeType)) {
+    //         return MediaType.CRASH;
+    //     } else if (ALLOWED_AUDIO_MIME_TYPES.contains(mimeType)) {
+    //         return MediaType.AUDIO;
+    //     } else if (ALLOWED_PDF_MIME_TYPES.contains(mimeType)) {
+    //         return MediaType.PDF;
+    //     } else if (ALLOWED_GIF_MIME_TYPES.contains(mimeType)) {
+    //         return MediaType.GIF;
         } else {
             throw new IOException("Unsupported file type: " + mimeType);
         }
