@@ -91,9 +91,10 @@ public abstract class AbstractStorageService implements StorageService {
         try {
             deleteBlob(gifBitmap.getMediaRef());
             gifMediaRepository.delete(gifBitmap);
-        } catch (Exception e) {
-            LOGGER.error("Error deleting GifBitmap: {}", e.getMessage(), e);
-        }
+        } 
+        // catch (Exception e) {
+        //     LOGGER.error("Error deleting GifBitmap: {}", e.getMessage(), e);
+        // }
     }
 
     protected abstract void uploadWithRetries(byte[] content, String objectName, String mimeType);
