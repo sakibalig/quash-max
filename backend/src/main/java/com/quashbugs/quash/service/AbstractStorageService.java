@@ -101,19 +101,19 @@ public abstract class AbstractStorageService implements StorageService {
 
     protected abstract void deleteBlob(String blobName);
 
-    // protected MediaType determineMediaType(String mimeType) throws IOException {
-    //     if (ALLOWED_IMAGE_MIME_TYPES.contains(mimeType)) {
-    //         return MediaType.IMAGE;
-    //     } else if (ALLOWED_VIDEO_MIME_TYPES.contains(mimeType)) {
-    //         return MediaType.VIDEO;
-    //     } else if (ALLOWED_TXT_MIME_TYPE.equals(mimeType)) {
-    //         return MediaType.CRASH;
-    //     } else if (ALLOWED_AUDIO_MIME_TYPES.contains(mimeType)) {
-    //         return MediaType.AUDIO;
-    //     } else if (ALLOWED_PDF_MIME_TYPES.contains(mimeType)) {
-    //         return MediaType.PDF;
-    //     } else if (ALLOWED_GIF_MIME_TYPES.contains(mimeType)) {
-    //         return MediaType.GIF;
+    protected MediaType determineMediaType(String mimeType) throws IOException {
+        if (ALLOWED_IMAGE_MIME_TYPES.contains(mimeType)) {
+            return MediaType.IMAGE;
+        } else if (ALLOWED_VIDEO_MIME_TYPES.contains(mimeType)) {
+            return MediaType.VIDEO;
+        } else if (ALLOWED_TXT_MIME_TYPE.equals(mimeType)) {
+            return MediaType.CRASH;
+        } else if (ALLOWED_AUDIO_MIME_TYPES.contains(mimeType)) {
+            return MediaType.AUDIO;
+        } else if (ALLOWED_PDF_MIME_TYPES.contains(mimeType)) {
+            return MediaType.PDF;
+        } else if (ALLOWED_GIF_MIME_TYPES.contains(mimeType)) {
+            return MediaType.GIF;
         } else {
             throw new IOException("Unsupported file type: " + mimeType);
         }
